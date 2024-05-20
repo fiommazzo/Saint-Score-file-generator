@@ -33,7 +33,7 @@ int <- data.frame(
   a$name, a$condition, a$Protein, a$value
 )
 
-int |> write.table(file = "/Users/ieo5803/Desktop/SAINTscore/Expi/inter.txt", 
+int |> write.table(file = "inter.txt", 
                    col.names = F, row.names = F, sep = "\t", quote = F)
 
 
@@ -48,7 +48,7 @@ b <- proteinGroups |>
          Protein = vapply(strsplit(Majority.protein.IDs, ";"), "[", 1, FUN.VALUE = character(1))) |>
   dplyr::select(Protein, Sequence.length, Gene)
 
-b |> write.table(file = "/output/prey.txt", 
+b |> write.table(file = "prey.txt", 
                  col.names = F, row.names = F, sep = "\t", quote = F)
 
 
@@ -59,5 +59,5 @@ c <- data.frame(
   mutate(Bait = vapply(strsplit(IP, "_"), "[", 1, FUN.VALUE = character(1)),
          Control = if_else(Bait == "WT", "C", "T"))
 
-c |> write.table(file = "/output/bait.txt", 
+c |> write.table(file = "bait.txt", 
                  col.names = F, row.names = F, sep = "\t", quote = F)
